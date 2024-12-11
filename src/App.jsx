@@ -18,13 +18,15 @@ function App() {
   }
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-6xl text-center my-7">Weather App</h1>
-      <div className="border-2 h-[400px] w-[600px] rounded-md flex flex-col items-center justify-evenly">
-        <div className="my-2 text-2xl">Location: Auckland</div>
-        <div className="my-2 text-2xl">Current Weather: High - {forecast ? forecast.daily.temperature_2m_max[0] + " C": "Loading"} Low - {forecast ? forecast.daily.temperature_2m_min[0] + " C" : "Loading"}</div>
+      <h1 className="text-6xl text-center my-7"><b>W</b>eather <span className="text-yellow-500"><b>A</b>pp</span></h1>
+      <div className="bg-gray-50 border-2 h-[400px] w-[600px] rounded-md flex flex-col items-center justify-evenly">
+        <div className="text-2xl"><b>Location:</b></div>
+        <div className="text-4xl text-blue-300">Auckland</div>
+        <div className="text-2xl"><b>Current Weather:</b></div>
+        <div className="text-xl"> <b>High</b> - {forecast ? forecast.daily.temperature_2m_max[0] + "C": "Loading"} <b>Low</b> - {forecast ? forecast.daily.temperature_2m_min[0] + "C" : "Loading"}</div>
         <button
           onClick={weatherUpdate}
-          className="bg-gray-200 rounded p-2 text-[2rem] hover:bg-yellow-400 hover:text-white "
+          className="bg-blue-100 rounded p-2 text-[2rem] hover:bg-yellow-400 hover:text-white hover:h-[70px] hover:w-[250px] hover:font-bold"
         >
           Check Weather
         </button>
