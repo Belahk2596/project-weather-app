@@ -1,21 +1,30 @@
 import React from "react";
 import "./App";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 function App() {
   const [forecast, setForecast] = useState();
 
   async function weatherUpdate() {
     const response = await fetch (
-      "https://api.open-meteo.com/v1/forecast" +
-        "?latitude=-36.86&longitude=174.77" +
-        "&daily=temperature_2m_max,temperature_2m_min"
-    )
+      "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={'88d43c40331df6f9a4ce5d298efb86d2'}"
+    //   "https://api.open-meteo.com/v1/forecast" +
+    //     "?latitude=-36.86&longitude=174.77" +
+    //     "&daily=temperature_2m_max,temperature_2m_min"
+        )
      if (response.ok) {
       let data = await response.json();
       setForecast(data);
+      console.log(data);
      }
   }
+
+  // useEffect(() => {
+  //    const interval = setInterval(() => {
+  //     weatherUpdate();
+  //     //console.log('Hello')
+  //    }, 5000)
+  // })
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-6xl text-center my-7"><b>W</b>eather <span className="text-yellow-500"><b>A</b>pp</span></h1>
